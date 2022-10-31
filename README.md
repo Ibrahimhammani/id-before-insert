@@ -111,7 +111,7 @@ logging.level.org.hibernate.SQL=DEBUG
 logging.level.org.hibernate.type=trace
 ```
 ### Running a test:
-To tests the whole thing lets tun this basic tests
+To tests the whole thing lets run this basic tests
 
 ```java
 @Test
