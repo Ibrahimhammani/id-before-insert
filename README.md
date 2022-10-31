@@ -8,7 +8,7 @@ Assume that you have a column that you need to update based on the ``ID `` of yo
 
 In our case let's use an entity we called Odd this entity contains only two properties, the ID and another property to store whether the ID is odd or even.
 ##  GitHub repository
-A working spring-boot project is available on this [GitHub repository](https://duckduckgo.com)
+A working spring-boot project is available on this [GitHub repository](git push -u origin main)
 ##  Let's get hands dirty
 ### Use a sequence generator for the ID
 The first step is delegating the  ``ID`` generation to Hibernate by using a sequence generation strategy and defining a sequence generator,that way it will be generated and included in the insert query; that hibernate will send to the RDBMS for persistence.
