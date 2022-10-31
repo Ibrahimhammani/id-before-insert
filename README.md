@@ -2,18 +2,18 @@
 ##  Introduction
 In this tutorial I will explain how to manipulate an entity ``ID`` even before it gets inserted into the database table.
 
-For that purpose will use spring framework (spring -boot) and hibernate to do that.
+For that purpose I will use spring framework (spring -boot) and hibernate to do that.
 ##  Use case
 Assume that you have a column that you need to update based on the ``ID `` of your row; however the entity is not created yet; so the ``ID`` doesn't exist yet.
 
-In our case let's use an entity we called Odd this entity contains only two properties, the ID and another property to store whether the ID is odd or even.
+In our case let's use an entity we called Odd. This entity contains only two properties, the ID and another property to store whether the ID is odd or even.
 ##  GitHub repository
 A working spring-boot project is available on this [GitHub repository](https://github.com/Ibrahimhammani/id-before-insert/)
 ##  Let's get hands dirty
 ### Use a sequence generator for the ID
 The first step is delegating the  ``ID`` generation to Hibernate by using a sequence generation strategy and defining a sequence generator,that way it will be generated and included in the insert query; that hibernate will send to the RDBMS for persistence.
 
-Be careful to not use a database sequence; because in that case the RDBMS will generate the id on his own.
+Be careful to not use a database sequence; because in that case the RDBMS will generate the id on its own.
 
 ```java
 @Id
@@ -23,7 +23,7 @@ Be careful to not use a database sequence; because in that case the RDBMS will g
 private Long id;
 ```
 ### Use a PreInsertEventListener
-Luckily hibernate allow us to define a callback just before inserting a row into database; and since the id is already generated, we will be able to use it in the event listener.
+Luckily hibernate allows us to define a callback just before inserting a row into the database; and since the id is already generated, we will be able to use it in the event listener.
 
 ```java
 @Component
