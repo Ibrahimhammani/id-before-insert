@@ -2,18 +2,18 @@
 ##  Introduction
 In this tutorial I will explain how to manipulate an entity ``ID`` even before it gets inserted into the database table.
 
-For that purpose I will use spring framework (spring -boot) and hibernate to do that.
+For that purpose I will use spring framework (spring -boot) and hibernate.
 ##  Use case
-Assume that you have a column that you need to update based on the ``ID `` of your row; however the entity is not created yet; so the ``ID`` doesn't exist yet.
+Assume that you have a column that you need to update based on the row ``ID``; however the entity is not created yet; so the ``ID`` doesn't exist yet.
 
-In our case let's use an entity we called Odd. This entity contains only two properties, the ID and another property to store whether the ID is odd or even.
+A basic use case consists of creating an entity ``Odd``, that has besides its ``ID`` a property called ``isOdd`` to store whether the ID is odd or even.
 ##  GitHub repository
 A working spring-boot project is available on this [GitHub repository](https://github.com/Ibrahimhammani/id-before-insert/)
 ##  Let's get hands dirty
 ### Use a sequence generator for the ID
-The first step is delegating the  ``ID`` generation to Hibernate by using a sequence generation strategy and defining a sequence generator,that way it will be generated and included in the insert query; that hibernate will send to the RDBMS for persistence.
+The first step is delegating the  ``ID`` generation to Hibernate by using a sequence generation strategy and by defining a sequence generator for it, that way the ``ID``  will be generated and included in the insert query; that hibernate will send to the RDBMS for persistence.
 
-Be careful to not use a database sequence; because in that case the RDBMS will generate the id on its own.
+Be careful not to use a database sequence; because in that case the RDBMS will generate the id on its own.
 
 ```java
 @Id
@@ -23,7 +23,7 @@ Be careful to not use a database sequence; because in that case the RDBMS will g
 private Long id;
 ```
 ### Use a PreInsertEventListener
-Luckily hibernate allows us to define a callback just before inserting a row into the database; and since the id is already generated, we will be able to use it in the event listener.
+Luckily hibernate allows us to define a callback just before inserting a row into the database; and since the id is already generated, we will be able to use it in that event listener.
 
 ```java
 @Component
@@ -80,7 +80,7 @@ public class EventListenerIntegrator implements Integrator {
 ```
 
 ### Add the integrator to hibernate properties
-The final step is adding this integrator to hibernate properties, so he will be available for use.
+The final step is making the previous integrator available for use by adding it to hibernate properties.
 
 ```java
 @Component
